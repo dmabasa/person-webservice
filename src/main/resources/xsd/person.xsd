@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.co.za/mmiholdings/schema" xmlns:per="http://www.co.za/mmiholdings/schema"
+	elementFormDefault="qualified">
+	<xs:element name="Person">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="FirstName" type="xs:string" />
+				<xs:element name="LastName" type="xs:string" />
+			</xs:sequence>
+			<xs:attribute ref="per:Id" use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="Id" type="xs:int" />
+	<xs:element name="addPersonRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="per:Person" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="getPersonRequest">
+		<xs:complexType>
+			<xs:attribute ref="per:Id" use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="getPersonResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="per:Person" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="getAllPersonsRequest">
+		<xs:complexType>
+			<xs:sequence />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="getAllPersonsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="per:Person" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="updatePersonRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="per:Person" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="deletePersonRequest">
+		<xs:complexType>
+			<xs:attribute ref="per:Id" use="required" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
